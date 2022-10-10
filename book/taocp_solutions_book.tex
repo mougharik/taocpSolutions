@@ -1,0 +1,54 @@
+\documentclass[fontsize=11pt, paper=a4]{scrbook}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[shortlabels]{enumitem}
+\usepackage{amsmath, amssymb}
+\usepackage{fullpage}
+\usepackage{indentfirst}
+\usepackage{mathtools}
+
+\DeclarePairedDelimiter\ceil{\lceil}{\rceil}
+\DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
+
+{%
+\newlength{\subsectionparindent}
+\newlength{\subsectionafterskip}
+
+\RedeclareSectionCommand[
+  style     = section,
+  font      = \normalfont\bfseries,
+  afterskip = \subsectionafterskip,
+  indent    = \subsectionparindent,
+]{subsection}
+
+\renewcommand{\thesection}{\arabic{subsection}}
+
+\AtBeginDocument{%
+  \setlength{\parindent}{\dimexpr2\baselineskip-1ex\relax}%
+  \setlength{\subsectionparindent}{\parindent}%
+  \setlength{\subsectionafterskip}{\fontdimen2\font plus \fontdimen3\font minus \fontdimen4\font}%
+}
+}%
+
+\setkomafont{disposition}{\rmfamily}
+
+\begin{document}
+\frontmatter
+\title{The Art of Computer Programming}
+\subtitle{\Large \textbf{An Explicit Solutions Guide}}
+\author{Keaun Moughari} 
+\date{\today} 
+\maketitle
+\tableofcontents
+\chapter{Preface}\label{sec:preface}
+
+
+\mainmatter
+\addchap{Linear Structures}\label{sec:linstruct}
+\addsec{Arrays}\label{sec:arrays}
+\addsec{Linked Lists}\label{sec:linkedlists}
+
+\addchap{Non-Linear Structures}\label{sec:nonlinstruct}
+
+
+\end{document}

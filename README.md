@@ -1,2 +1,2 @@
 # taocpSolutions
-Explicit solutions for selected problems in Knuth's The Art of Computer Programming
+Despite its fame, it is surprisingly difficult to find clear and interpretable solutions to Knuth's seminal work, "The Art of Computer Programming." In the hope of saving others the potential hours of scouring the Internet when they hit a wall, I've decided to catalogue some selected problems of interest and their explicit solutions here. Eventually, I plan to port the problems/solutions to a book, organizing them by the data structures or algorithms to which they are most related.

@@ -7,8 +7,11 @@
 \usepackage{indentfirst}
 \usepackage{mathtools}
 \usepackage{fullpage}
+\usepackage{tcolorbox}
 \usepackage{graphicx}
 \graphicspath{{img/}}
+\tcbuselibrary{breakable}
+
 
 \DeclarePairedDelimiter\ceil{\lceil}{\rceil}
 \DeclarePairedDelimiter\floor{\lfloor}{\rfloor}
@@ -87,7 +90,7 @@
             &= \frac{b^{\floor*{\log_b{n}}} - b} {b-1}
         \end{align*}
         \begin{align*}
-            \\(3) \quad f  &= \floor*{\log_b{n}}; b \ge 2\\
+            \\\qquad\qquad(3) \quad f  &= \floor*{\log_b{n}}; b \ge 2\\
             S_{n} &= \sum_{k=1}^{n-1} k \text{\space} [k+1 \text{\space is a power of\space} b]\\
             &= \sum_{k=1}^{f} (b^{k} - 1)\\
             &= \sum_{k=1}^{f} b^{k} - \sum_{k=1}^{f} 1\\
@@ -158,6 +161,37 @@
 \end{center}
 \begin{enumerate}[(a), leftmargin=1.5cm]
     \item Show that a simple algebraic relationship holds between the generating functions $A(z)=\sum_k a_{k}z^{k}$ and $B(z)=\sum_k b_{k}z^{k}$.
+        \vspace{.5cm}
+        \\\textit{Solution:}
+        \begin{tcolorbox}[breakable, colback=white, colframe=white]
+            \qquad The number of internal nodes at each level $k$ in a binary tree is twice\
+            the number of internal nodes at the previous level minus the number of external nodes at\
+            level $k$ (for $k>0$, as level 0 has exactly 1 internal node). With that in mind, the\
+            generating function, $A(z)$, can be modified to represent the total possible number of internal\ 
+            nodes at each level. Then, to calculate the number of internal nodes, the number of external nodes can\ 
+            be subtracted from this modified representation.
+        \end{tcolorbox}
+        \begin{align*}        
+            A(z)+B(z) &= (a_{0} + b_{0}) + (a_{1} + b_{1})z + \dotsc + (a_{n} + b_{n})z^{n}\\
+            2A(z)   &= (a_{0} + a_{0}) + (a_{1} + a_{1})z + \dotsc + (a_{n} + a_{n})z^{n}\\
+            2zA(z)  &= 0 + 2a_{0}z + 2a_{1}z^{2} + \dotsc + 2a_{n-1}z^{n}\\
+            1 + 2zA(z) &= 1 + 2a_{0}z + 2a_{1}z^{2} + \dotsc + 2a_{n-1}z^{n}\\
+            &= A(z)+B(z)\\
+        \end{align*}
+        \vspace*{-1cm}
+        \begin{align*}
+            a_{0} + b_{0} = 1       \quad&\Longrightarrow\quad a_{0} = 1 - b_{0} = 1\\
+            a_{1} + b_{1} = 2a_{0}  \quad&\Longrightarrow\quad a_{1} = 2a_{0} - b_{1} = 2\\
+            a_{2} + b_{2} = 2a_{1}  \quad&\Longrightarrow\quad a_{2} = 2a_{1} - b_{2} = 4\\
+            a_{3} + b_{3} = 2a_{2}  \quad&\Longrightarrow\quad a_{3} = 2a_{2} - b_{3} = 4\\
+            a_{4} + b_{4} = 2a_{3}  \quad&\Longrightarrow\quad a_{4} = 2a_{3} - b_{4} = 1\\
+            a_{5} + b_{5} = 2a_{4}  \quad&\Longrightarrow\quad a_{5} = 2a_{4} - b_{5} = 0\\
+        \end{align*}
+        \begin{tcolorbox}[breakable, colback=white, colframe=white]
+            \qquad As seen above, the total number of nodes at each level can be expressed exclusively\ 
+            in terms of $A(z)$ and an algebraic relationship between both representations exists;\
+            namely, $A(z)=1+2zA(z)-B(z)$.
+        \end{tcolorbox}
     \item The probability distribution for a successful search in a binary tree has the generating function $g(z) = zA(z)/N$,\
             and for an unsuccessful search the generating function is $h(z) = B(z)/(N + 1)$. (Thus in the text’s notation we have \ 
             $C_{N} = \text{mean}(g), C^{'}_{N} = \text{mean}(h)$, and Eq. 2 ($C_{N}=(1+\frac{1}{N})C^{'}_{N}-1$) gives a relation \ 
